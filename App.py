@@ -6,7 +6,7 @@ class App:
         self.image = Image('assets/circle.png')
 
     def run(self):
-        self.image.resize(new_width=20, new_height=20)
+        self.image.resize(new_width=200, new_height=200)
 
 
 if __name__ == "__main__":
