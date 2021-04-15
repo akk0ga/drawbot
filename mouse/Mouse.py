@@ -41,3 +41,15 @@ class Mouse:
             self.mouse.press(Button.left)
         else:
             raise Exception('The button selected is not allow')
+
+    def release_button(self, button: str = 'left'):
+        """
+        release button previously pressed
+        :param button:
+        """
+        if button == 'right':
+            self.mouse.release(Button.right)
+        elif button == 'left':
+            self.mouse.release(Button.left)
+        else:
+            raise Exception('The button selected is not allow')
