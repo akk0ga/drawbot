@@ -1,9 +1,12 @@
+from Image.Image import Image
+
+
 class App:
     def __init__(self):
-        pass
+        self.image = Image('')
 
     def run(self):
-        pass
+
 
 
 if __name__ == "__main__":
