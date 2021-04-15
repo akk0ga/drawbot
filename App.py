@@ -8,7 +8,7 @@ class App:
         self.mouse = Mouse()
 
     def run(self):
-        self.mouse.move(x=1920, y=500)
+        self.mouse.click()
 
 
 if __name__ == "__main__":

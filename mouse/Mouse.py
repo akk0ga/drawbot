@@ -11,3 +11,18 @@ class Mouse:
         :return:
         """
         self.mouse.position = (x, y)
+
+    def click(self, button: str = 'left', number: int = 1):
+        """
+        perform click on screen\n
+        button is equal to:\n
+        - right
+        - left
+        :param number:
+        :param button:
+        :return:
+        """
+        if button == 'right':
+            self.mouse.click(Button.right, number)
+        elif button == 'left':
+            self.mouse.click(Button.left, number)
