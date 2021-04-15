@@ -8,7 +8,6 @@ class Mouse:
     def move(self, x: int, y: int):
         """
         move the mouse to select position
-        :return:
         """
         self.mouse.position = (x, y)
 
@@ -20,9 +19,25 @@ class Mouse:
         - left
         :param number:
         :param button:
-        :return:
         """
         if button == 'right':
             self.mouse.click(Button.right, number)
         elif button == 'left':
             self.mouse.click(Button.left, number)
+        else:
+            raise Exception('The button selected is not allow')
+
+    def press_button(self, button: str = 'left'):
+        """
+        perform click but don't release it\n
+        button is equal to:\n
+        - right
+        - left
+        :param button:
+        """
+        if button == 'right':
+            self.mouse.press(Button.right)
+        elif button == 'left':
+            self.mouse.press(Button.left)
+        else:
+            raise Exception('The button selected is not allow')
