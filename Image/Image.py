@@ -5,7 +5,7 @@ class Image:
     def __init__(self, image_path: str):
         self.image = Img.open(image_path)
 
-    def resize(self, new_width: int, new_height: int):
+    def resize(self, new_width: int = 100, new_height: int = 100):
         """
         resize and save image
         :param new_width:
@@ -14,6 +14,7 @@ class Image:
         """
         resize = self.image.resize((new_width, new_height))
         resize.save(fp=f'assets/resized.{self.image.format}')
+        return resize
 
     def show(self):
         """
@@ -22,5 +23,7 @@ class Image:
         """
         self.image.show()
 
-    def get_pixel(self):
-        
+    def set_path(self, image_path: str):
+        self.image = Img.open(image_path)
+
+    path = property(fset=set_path)
