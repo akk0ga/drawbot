@@ -4,7 +4,10 @@ from mouse.Mouse import Mouse
 class Paint:
     def __init__(self, mode: str = 'classic', brush: str = 'brush'):
         """
-        mode is equal to\n
+        mode represent the paint version\n
+        brush represent the brush choose to draw\n
+
+        mode is equal to:\n
         - classic (basic paint)
         - 3d (if you use paint 3d)
 
@@ -24,9 +27,13 @@ class Paint:
         self.mode = mode
         self.__brush_available: dict = {
             'classic': ('brush', 'calligraphy', 'air-brush'),
-            '3d': ('brush', 'calligraphy', 'pen', 'pastel')
+            '3d': ('marker', 'calligraphy', 'pen', 'pastel')
         }
-        
+
+        if brush in self.__brush_available[mode]:
+            self.brush = brush
+        else:
+            raise Exception('the brush select is not available for this mode')
         # define position and rgb code for color
         # 0 -> position
         # 1 -> rgb code
@@ -76,3 +83,19 @@ class Paint:
             }
         else:
             raise Exception('the mode you choose is not available please select one between: classic, 3d')
+
+    def list_available_colors(self):
+        """
+        print the list of available color
+        :return:
+        """
+        print(f'total: {len(self.color)}')
+        for color in self.color:
+            print(color)
+
+    def color_info(self, color: str):
+        """
+        print color info screen pos + rgb code
+        :return:
+        """
+        print(f'x: {self.color[color][0][0]}\ny: {self.color[color][0][1]}\nrgb: {self.color[color][1]}')
