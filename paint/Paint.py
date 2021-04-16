@@ -2,15 +2,31 @@ from mouse.Mouse import Mouse
 
 
 class Paint:
-    def __init__(self, mode: str = 'classic'):
+    def __init__(self, mode: str = 'classic', brush: str = 'brush'):
         """
         mode is equal to\n
         - classic (basic paint)
         - 3d (if you use paint 3d)
+
+        brush available for classic mode:\n
+        - brush
+        - calligraphy
+        - air-brush
+
+        brush available for 3d mode:\n
+        - marker
+        - calligraphy
+        - pen
+        - pastel
+
         :param mode:
         """
         self.mode = mode
-
+        self.__brush_available: dict = {
+            'classic': ('brush', 'calligraphy', 'air-brush'),
+            '3d': ('brush', 'calligraphy', 'pen', 'pastel')
+        }
+        
         # define position and rgb code for color
         # 0 -> position
         # 1 -> rgb code
@@ -58,3 +74,5 @@ class Paint:
                 'indigo': ((1771, 946), (63, 72, 204)),
                 'purple': ((1805, 943), (163, 73, 164))
             }
+        else:
+            raise Exception('the mode you choose is not available please select one between: classic, 3d')

@@ -1,5 +1,6 @@
 from Image.Image import Image
 from mouse.Mouse import Mouse
+from paint.Paint import Paint
 
 
 class App:
