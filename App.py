@@ -10,7 +10,7 @@ class App:
         self.paint = Paint(mode='classic', brush='brush')
 
     def run(self):
-        self.paint.color_info(color='white')
+        self.paint.define_draw_zone()
 
 
 if __name__ == "__main__":

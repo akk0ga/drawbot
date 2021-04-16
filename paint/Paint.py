@@ -80,11 +80,13 @@ class Paint:
         self.mouse = Mouse()
         self.mode = mode
 
+        # define color list to use
         if mode in self.__color_list:
             self.color: dict = self.__color_list[mode]
         else:
             raise Exception('the mode you choose is not available please select one between: classic, 3d')
 
+        # define brush to use
         if brush in self.__brush_available[mode]:
             self.brush = brush
         else:
@@ -98,11 +100,10 @@ class Paint:
         """
         self.mouse.wait_click(message='left angle')
         p1 = self.mouse.position
-        print(f'first point {p1}')
         self.mouse.wait_click(message='right angle')
         p2 = self.mouse.position
-        print(f'second point: {p2}')
         print(f'point1: {p1}\npoint2: {p2}')
+        
 
     def list_available_colors(self):
         """
