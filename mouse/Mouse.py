@@ -5,6 +5,7 @@ from pynput import mouse
 class Mouse:
     def __init__(self):
         self.mouse = Controller()
+        self.position: tuple
 
     def move(self, x: int, y: int):
         """
@@ -63,8 +64,8 @@ class Mouse:
 
     def __on_click(self, x, y, button, pressed):
         if pressed and button == Button.left:
-            print(f'pressed at {(x,y)}')
-        if not pressed and button == Button.left:
+            self.position = x, y
+        if not pressed:
             # Stop listener
             return False
 

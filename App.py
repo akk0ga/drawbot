@@ -7,10 +7,10 @@ class App:
     def __init__(self):
         self.image = Image('assets/circle.png')
         self.mouse = Mouse()
-        self.paint = Paint(mode='3d', brush='marker')
+        self.paint = Paint(mode='classic', brush='brush')
 
     def run(self):
-        self.paint.define_draw_zone()
+        self.paint.color_info(color='white')
 
 
 if __name__ == "__main__":
