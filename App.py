@@ -10,7 +10,8 @@ class App:
         self.paint = Paint(mode='classic', brush='brush')
 
     def run(self):
-        self.paint.define_draw_zone()
+        zone = self.paint.define_draw_zone()
+        self.paint.draw_shape(size=zone)
 
 
 if __name__ == "__main__":

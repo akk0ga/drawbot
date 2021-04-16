@@ -104,13 +104,19 @@ class Paint:
         p2 = self.mouse.position
         print(f'point1: {p1}\npoint2: {p2}')
 
-        p1_width, p1_height = p1
         p2_width, p2_height = p2
 
-        width = p2_width - p1_width
-        height = p2_height - p1_height
+        return p2_width, p2_height, p1
 
-        return width, height, p1_width
+    def draw_shape(self, size: tuple):
+        """
+        size needs to contain 3 value, (width: int, height: int, start position: tuple)
+        :param size:
+        """
+        width, height, start = size
+        for x in range(start[0], width+1):
+            self.mouse.move(x, start[1])
+            print(x)
 
     def list_available_colors(self):
         """
