@@ -92,18 +92,25 @@ class Paint:
         else:
             raise Exception('the brush select is not available for this mode')
 
-    def define_draw_zone(self):
+    def define_draw_zone(self) -> tuple:
         """
-        define draw zone with diagonal, select left top point first
-        and next right bottom
-        :return:
+        define width and height for the draw to do
+        in the tuple value are (width, height, position were start draw)
+        :return: tuple
         """
         self.mouse.wait_click(message='left angle')
         p1 = self.mouse.position
         self.mouse.wait_click(message='right angle')
         p2 = self.mouse.position
         print(f'point1: {p1}\npoint2: {p2}')
-        
+
+        p1_width, p1_height = p1
+        p2_width, p2_height = p2
+
+        width = p2_width - p1_width
+        height = p2_height - p1_height
+
+        return width, height, p1_width
 
     def list_available_colors(self):
         """
