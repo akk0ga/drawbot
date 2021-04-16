@@ -1,3 +1,5 @@
+import time
+
 from mouse.Mouse import Mouse
 
 
@@ -114,9 +116,13 @@ class Paint:
         :param size:
         """
         width, height, start = size
-        for x in range(start[0], width+1):
-            self.mouse.move(x, start[1])
-            print(x)
+        self.mouse.move(x=start[0], y=start[1])
+        for y in range(start[1], height+1):
+            for x in range(start[0], width+1):
+                self.mouse.move(x, y)
+                self.mouse.press_button()
+            self.mouse.release_button()
+            time.sleep(1/1000)
 
     def list_available_colors(self):
         """
