@@ -1,4 +1,5 @@
 from pynput.mouse import Button, Controller
+from pynput import mouse
 
 
 class Mouse:
@@ -53,3 +54,9 @@ class Mouse:
             self.mouse.release(Button.left)
         else:
             raise Exception('The button selected is not allow')
+
+    def get_position(self) -> tuple:
+        """
+        return mouse position
+        """
+        return self.mouse.position
