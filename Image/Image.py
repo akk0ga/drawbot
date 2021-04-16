@@ -5,16 +5,18 @@ class Image:
     def __init__(self, image_path: str):
         self.image = Img.open(image_path)
 
-    def resize(self, new_width: int = 100, new_height: int = 100):
+    def resize(self, new_width: int = 100, new_height: int = 100, get_path: bool = False) -> str:
         """
-        resize and save image
+        resize and save image, you can get the path of resized image with get_path True
+        :param get_path:
         :param new_width:
         :param new_height:
-        :return:
+        :return: str
         """
         resize = self.image.resize((new_width, new_height))
         resize.save(fp=f'assets/resized.{self.image.format}')
-        return resize
+        if get_path:
+            return f'assets/resized.{self.image.format}'
 
     def show(self):
         """
