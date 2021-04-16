@@ -100,25 +100,24 @@ class Paint:
         in the tuple value are (width, height, position were start draw)
         :return: tuple
         """
-        self.mouse.wait_click(message='left angle')
+        self.mouse.wait_click(message='select top left angle')
         p1 = self.mouse.position
-        self.mouse.wait_click(message='right angle')
+        self.mouse.wait_click(message='select bottom right angle')
         p2 = self.mouse.position
-        print(f'point1: {p1}\npoint2: {p2}')
 
-        p2_width, p2_height = p2
+        return p1, p2
 
-        return p2_width, p2_height, p1
-
-    def draw_shape(self, size: tuple):
+    def draw_shape(self, size: tuple, start_to: tuple):
         """
-        size needs to contain 3 value, (width: int, height: int, start position: tuple)
+        draw shape
+        :param start_to:
         :param size:
         """
-        width, height, start = size
-        self.mouse.move(x=start[0], y=start[1])
-        for y in range(start[1], height+1):
-            for x in range(start[0], width+1):
+        width, height = size
+
+        self.mouse.move(x=start_to[0], y=start_to[1])
+        for y in range(start_to[1], height+1):
+            for x in range(start_to[0], width+1):
                 self.mouse.move(x, y)
                 self.mouse.press_button()
             self.mouse.release_button()
