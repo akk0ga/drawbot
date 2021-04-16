@@ -29,6 +29,7 @@ class Paint:
             'classic': ('brush', 'calligraphy', 'air-brush'),
             '3d': ('marker', 'calligraphy', 'pen', 'pastel')
         }
+        self.mouse = Mouse()
 
         if brush in self.__brush_available[mode]:
             self.brush = brush
@@ -83,6 +84,15 @@ class Paint:
             }
         else:
             raise Exception('the mode you choose is not available please select one between: classic, 3d')
+
+    def define_draw_zone(self):
+        """
+        define draw zone with diagonal, select left top point first
+        and next right bottom
+        :return:
+        """
+        self.mouse.wait_click(message='select left top angle')
+        self.mouse.wait_click(message='select bottom right angle')
 
     def list_available_colors(self):
         """

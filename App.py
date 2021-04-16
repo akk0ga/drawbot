@@ -10,7 +10,7 @@ class App:
         self.paint = Paint(mode='3d', brush='marker')
 
     def run(self):
-        self.paint.color_info(color='white')
+        self.paint.define_draw_zone()
 
 
 if __name__ == "__main__":

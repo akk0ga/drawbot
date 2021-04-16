@@ -60,3 +60,19 @@ class Mouse:
         return mouse position
         """
         return self.mouse.position
+
+    def __on_click(self, x, y, button, pressed):
+        if pressed and button == Button.left:
+            print(f'pressed at {(x,y)}')
+        if not pressed and button == Button.left:
+            # Stop listener
+            return False
+
+    def wait_click(self, message: str):
+        """
+        wait mouse click
+        :return:
+        """
+        with mouse.Listener(on_click=self.__on_click) as listener:
+            print(message)
+            listener.join()
