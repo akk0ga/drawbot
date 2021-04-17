@@ -124,6 +124,13 @@ class Paint:
             self.mouse.release_button()
             time.sleep(1 / 1000)
 
+    def define_color(self, pixel_list):
+        """
+        define color to use on the image
+        :return:
+        """
+        print(pixel_list)
+
     def list_available_colors(self):
         """
         print the list of available color

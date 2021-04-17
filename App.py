@@ -21,7 +21,9 @@ class App:
         self.image.path = resize_path
 
         # get image color
-        self.paint.color_info(color='indigo')
+        pixels_color = self.image.get_color()
+        self.paint.define_color(pixels_list=pixels_color)
+
 
 if __name__ == "__main__":
     app = App()
