@@ -139,7 +139,7 @@ class Paint:
                     self.select_color(color=total)
                     self.mouse.move(x=x, y=y)
                     self.mouse.click()
-                    time.sleep(1 / 1000)
+                    time.sleep(1/100)
             pixel[1] = pixel[1] + 1
             self.mouse.release_button()
 

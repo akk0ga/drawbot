@@ -20,10 +20,9 @@ class App:
         resize_path = self.image.resize(new_height=new_height, get_path=True)
         self.image.path = resize_path
 
-        # get image color
+        # get and set image color
         pixels_color = self.image.get_color()
         pixel_list = self.paint.define_color(pixel_list=pixels_color)
-
         self.image.update_color(colors=pixel_list)
 
         # draw shape
