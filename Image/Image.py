@@ -31,9 +31,7 @@ class Image:
         get color from the image in matrix
         :return: list
         """
-        pixel_color = np.array(self.image.getdata())
-        pixel_color = np.split(pixel_color, self.image.width)
-        return pixel_color
+        return list(self.image.getdata())
 
     def set_path(self, image_path: str):
         self.image = Img.open(image_path)

@@ -129,7 +129,21 @@ class Paint:
         define color to use on the image
         :return:
         """
-        print(pixel_list)
+        colors = self.__color_list[self.mode]
+        for pixel in range(0, len(pixel_list)):  # set color on each pixel
+            total: int = 0  # calc value of each pixel
+            closest_value = None  # closest value from color list
+
+            # calc rgb value
+            for value in pixel_list[pixel]:
+                total = total + value
+
+            for color in colors:
+                difference: int = abs(total - color)
+                if closest_value is None or difference == 0 or difference < closest_value[1]:
+                    closest_value = [color, difference]
+                print(f'total: {total} / pixel: {pixel} / closest: {closest_value}')
+
 
     def list_available_colors(self):
         """
@@ -154,6 +168,7 @@ class Paint:
                 key = key
                 break
         if find:
-            print(f'name: {self.__color_list["classic"][key][0]}\nposition on screen: {self.__color_list["classic"][key][1]}\nrgb: {self.__color_list["classic"][key][2]}')
+            print(
+                f'name: {self.__color_list["classic"][key][0]}\nposition on screen: {self.__color_list["classic"][key][1]}\nrgb: {self.__color_list["classic"][key][2]}')
         else:
             raise Exception('no color find')

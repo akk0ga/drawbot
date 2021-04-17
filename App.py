@@ -5,7 +5,7 @@ from paint.Paint import Paint
 
 class App:
     def __init__(self):
-        self.image = Image('assets/circle.png')
+        self.image = Image('assets/complex.jpg')
         self.mouse = Mouse()
         self.paint = Paint(mode='classic', brush='brush')
 
@@ -22,7 +22,7 @@ class App:
 
         # get image color
         pixels_color = self.image.get_color()
-        self.paint.define_color(pixels_list=pixels_color)
+        self.paint.define_color(pixel_list=pixels_color)
 
 
 if __name__ == "__main__":
