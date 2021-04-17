@@ -108,21 +108,33 @@ class Paint:
 
         return p1, p2
 
-    def draw_shape(self, size: tuple, start_to: tuple):
+    def draw_shape(self, size: tuple, start_to: tuple, pixel_list: list):
         """
         draw shape
+        :param pixel_list:
         :param start_to:
         :param size:
         """
         width, height = size
-
         self.mouse.move(x=start_to[0], y=start_to[1])
-        for y in range(start_to[1], height + 1):
-            for x in range(start_to[0], width + 1):
+        """
+        for y in range(start_to[1], height):
+            for x in range(start_to[0], width):
+                print(pixel_list[x])
                 self.mouse.move(x, y)
                 self.mouse.press_button()
             self.mouse.release_button()
             time.sleep(1 / 1000)
+        """
+
+    def select_color(self, color: int):
+        """
+        select the correct color
+        :return:
+        """
+        x, y = self.__color_list[self.mode][color][1]
+        self.mouse.move(x=x, y=y)
+        self.mouse.click()
 
     def define_color(self, pixel_list: list) -> list:
         """

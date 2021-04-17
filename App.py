@@ -22,7 +22,10 @@ class App:
 
         # get image color
         pixels_color = self.image.get_color()
-        self.paint.define_color(pixel_list=pixels_color)
+        pixel_list = self.paint.define_color(pixel_list=pixels_color)
+
+        # draw shape
+        self.paint.draw_shape(size=p2, start_to=p1, pixel_list=pixel_list)
 
 
 if __name__ == "__main__":
