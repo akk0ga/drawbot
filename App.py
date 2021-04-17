@@ -5,7 +5,7 @@ from paint.Paint import Paint
 
 class App:
     def __init__(self):
-        self.image = Image('assets/complex.jpg')
+        self.image = Image('assets/astol.jpg')
         self.mouse = Mouse()
         self.paint = Paint(mode='classic', brush='brush')
 
@@ -24,8 +24,10 @@ class App:
         pixels_color = self.image.get_color()
         pixel_list = self.paint.define_color(pixel_list=pixels_color)
 
+        self.image.update_color(colors=pixel_list)
+
         # draw shape
-        self.paint.draw_shape(size=p2, start_to=p1, pixel_list=pixel_list)
+        self.paint.draw_shape(size=p2, start_to=p1, image=resize_path)
 
 
 if __name__ == "__main__":

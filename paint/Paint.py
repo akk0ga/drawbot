@@ -1,5 +1,5 @@
 import time
-
+from PIL import Image
 from mouse.Mouse import Mouse
 
 
@@ -108,29 +108,45 @@ class Paint:
 
         return p1, p2
 
-    def draw_shape(self, size: tuple, start_to: tuple, pixel_list: list):
+    def draw_shape(self, size: tuple, start_to: tuple, image):
         """
         draw shape
-        :param pixel_list:
+        :param image:
         :param start_to:
         :param size:
         """
-        width, height = size
+
+        start_width, start_height = start_to
         self.mouse.move(x=start_to[0], y=start_to[1])
-        """
-        for y in range(start_to[1], height):
-            for x in range(start_to[0], width):
-                print(pixel_list[x])
-                self.mouse.move(x, y)
-                self.mouse.press_button()
+        pixel: list = [0, 0]  # x, y
+
+        image = Image.open(image)
+        img = image.load()
+
+        # define draw width and height
+        width = image.width + start_width
+        height = image.height + start_height
+
+        for y in range(start_height, height):
+            if pixel[0] != 0:
+                pixel[0] = 0
+            for x in range(start_width, width):
+                total: int = 0
+                for value in img[pixel[0], pixel[1]]:
+                    total = total+value
+                pixel[0] = pixel[0] + 1
+                if total != 765:
+                    self.select_color(color=total)
+                    self.mouse.move(x=x, y=y)
+                    self.mouse.click()
+                    time.sleep(1 / 1000)
+            pixel[1] = pixel[1] + 1
             self.mouse.release_button()
-            time.sleep(1 / 1000)
-        """
 
     def select_color(self, color: int):
         """
-        select the correct color
-        :return:
+        select color on paint
+        :param color: int
         """
         x, y = self.__color_list[self.mode][color][1]
         self.mouse.move(x=x, y=y)
@@ -147,7 +163,6 @@ class Paint:
         for pixel in range(0, len(pixel_list)):
             total: int = 0  # calc value of each pixel
             closest_value = None  # closest value from color list
-
             # calc rgb value
             for value in pixel_list[pixel]:
                 total = total + value

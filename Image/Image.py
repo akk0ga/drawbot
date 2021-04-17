@@ -1,5 +1,4 @@
 from PIL import Image as Img
-import numpy as np
 
 
 class Image:
@@ -15,9 +14,9 @@ class Image:
         """
         new_width = int(new_height / self.image.height * self.image.width)
         resize = self.image.resize((new_width, new_height))
-        resize.save(fp=f'assets/resized.{self.image.format}')
+        resize.save(fp=f'assets/resized.png')
         if get_path:
-            return f'assets/resized.{self.image.format}'
+            return f'assets/resized.png'
 
     def show(self):
         """
@@ -25,6 +24,19 @@ class Image:
         :return:
         """
         self.image.show()
+
+    def update_color(self, colors: list):
+        """
+        create new image with paint color
+        :return:
+        """
+        pixel = 0
+        load_image = self.image.load()
+        for y in range(0, self.image.height):
+            for x in range(0, self.image.width):
+                load_image[x, y] = colors[pixel]
+                pixel += 1
+        self.image.save(fp='assets/resized.png')
 
     def get_color(self) -> list:
         """
