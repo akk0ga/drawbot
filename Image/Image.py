@@ -1,5 +1,5 @@
 from PIL import Image as Img
-from PIL import ImageColor
+import numpy as np
 
 
 class Image:
@@ -26,12 +26,14 @@ class Image:
         """
         self.image.show()
 
-    def get_color(self):
+    def get_color(self) -> list:
         """
-        get color from the image
-        :return:
+        get color from the image in matrix
+        :return: list
         """
-        pass
+        pixel_color = np.array(self.image.getdata())
+        pixel_color = np.split(pixel_color, self.image.width)
+        return pixel_color
 
     def set_path(self, image_path: str):
         self.image = Img.open(image_path)

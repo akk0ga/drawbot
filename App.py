@@ -13,13 +13,14 @@ class App:
         # define the zone where draw
         print('define the zone')
         zone = self.paint.define_draw_zone()
-        p1, p2 = zone
+        p1, p2 = zone  # to draw shape p2 = size, p1 = start_to
 
         # resize image
-        new_width = p2[0] - p1[0]
         new_height = p2[1] - p1[1]
         resize_path = self.image.resize(new_height=new_height, get_path=True)
         self.image.path = resize_path
+
+        # get image color
 
 
 if __name__ == "__main__":
