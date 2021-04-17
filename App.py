@@ -18,9 +18,9 @@ class App:
         # resize image
         new_width = p2[0] - p1[0]
         new_height = p2[1] - p1[1]
-        resize_path = self.image.resize(new_width=new_width, new_height=new_height, get_path=True)
+        resize_path = self.image.resize(new_height=new_height, get_path=True)
         self.image.path = resize_path
-        
+
 
 if __name__ == "__main__":
     app = App()
