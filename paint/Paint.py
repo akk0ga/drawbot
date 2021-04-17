@@ -130,7 +130,8 @@ class Paint:
         :return:
         """
         colors = self.__color_list[self.mode]
-        for pixel in range(0, len(pixel_list)):  # set color on each pixel
+        # set color on each pixel
+        for pixel in range(0, len(pixel_list)):
             total: int = 0  # calc value of each pixel
             closest_value = None  # closest value from color list
 
@@ -138,12 +139,14 @@ class Paint:
             for value in pixel_list[pixel]:
                 total = total + value
 
+            # get the difference to set correct color
             for color in colors:
                 difference: int = abs(total - color)
-                if closest_value is None or difference == 0 or difference < closest_value[1]:
+                if closest_value is None or difference < closest_value[1]:
                     closest_value = [color, difference]
-                print(f'total: {total} / pixel: {pixel} / closest: {closest_value}')
+            pixel_list[pixel] = colors[closest_value[0]][2]
 
+        return pixel_list
 
     def list_available_colors(self):
         """
