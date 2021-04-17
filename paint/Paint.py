@@ -124,10 +124,11 @@ class Paint:
             self.mouse.release_button()
             time.sleep(1 / 1000)
 
-    def define_color(self, pixel_list):
+    def define_color(self, pixel_list: list) -> list:
         """
         define color to use on the image
-        :return:
+        :param pixel_list: list
+        :return: list
         """
         colors = self.__color_list[self.mode]
         # set color on each pixel
@@ -144,6 +145,8 @@ class Paint:
                 difference: int = abs(total - color)
                 if closest_value is None or difference < closest_value[1]:
                     closest_value = [color, difference]
+
+            # change the original with the closest color on the pixel
             pixel_list[pixel] = colors[closest_value[0]][2]
 
         return pixel_list
