@@ -18,9 +18,9 @@ class Image:
         :param path:
         """
         if path_type == 'url':
-            self.image = Img.open(requests.get(url, stream=True).raw)
+            self.image = Img.open(requests.get(url, stream=True).raw).convert('RGB')
         elif path_type == 'path':
-            self.image = Img.open(path)
+            self.image = Img.open(path).convert('RGB')
         else:
             raise Exception('invalid type choose between url or path')
 

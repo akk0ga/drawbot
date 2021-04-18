@@ -133,13 +133,13 @@ class Paint:
             for x in range(start_width, width):
                 total: int = 0
                 for value in img[pixel[0], pixel[1]]:
-                    total = total+value
+                    total = total + value
                 pixel[0] = pixel[0] + 1
                 if total != 765:
                     self.select_color(color=total)
                     self.mouse.move(x=x, y=y)
                     self.mouse.click()
-                    time.sleep(1/100)
+                    time.sleep(1 / 100)
             pixel[1] = pixel[1] + 1
             self.mouse.release_button()
 
@@ -154,27 +154,29 @@ class Paint:
 
     def define_color(self, pixel_list: list) -> list:
         """
-        define color to use on the image
-        :param pixel_list: list
-        :return: list
-        """
-        colors = self.__color_list[self.mode]
-        # set color on each pixel
+                update image color
+                :param pixel_list:
+                :return:
+                """
+        paint_color = self.__color_list[self.mode]  # get color to compare for select mode
+
         for pixel in range(0, len(pixel_list)):
-            total: int = 0  # calc value of each pixel
-            closest_value = None  # closest value from color list
-            # calc rgb value
-            for value in pixel_list[pixel]:
-                total = total + value
+            r, g, b = pixel_list[pixel]
+            correct_diff = None
+            correct_rgb = None
 
-            # get the difference to set correct color
-            for color in colors:
-                difference: int = abs(total - color)
-                if closest_value is None or difference < closest_value[1]:
-                    closest_value = [color, difference]
+            for color in paint_color:
+                cr, cg, cb = paint_color[color][2]
+                difference = abs(r - cr) + abs(g - cg) + abs(b - cb)
 
-            # change the original with the closest color on the pixel
-            pixel_list[pixel] = colors[closest_value[0]][2]
+                if correct_diff is None and correct_rgb is None:
+                    correct_diff = difference
+                    correct_rgb = [cr, cg, cb]
+                else:
+                    if difference < correct_diff:
+                        correct_diff = difference
+                        correct_rgb = [cr, cg, cb]
+            pixel_list[pixel] = (correct_rgb[0], correct_rgb[1], correct_rgb[2])
 
         return pixel_list
 
