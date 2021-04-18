@@ -1,9 +1,28 @@
 from PIL import Image as Img
+import requests
 
 
 class Image:
-    def __init__(self, image_path: str):
-        self.image = Img.open(image_path)
+    def __init__(self, path_type: str = 'url', url: str = '', path: str = ''):
+        """
+        type is required to define which type used if u want to use a local path or url,
+        possible value are:\n
+        - url (default)
+        - path\n
+
+        url must be the image source (empty if type is path)\n
+        path must be the image local path (empty if type is url)\n
+
+        :param path_type:
+        :param url:
+        :param path:
+        """
+        if path_type == 'url':
+            self.image = Img.open(requests.get(url, stream=True).raw)
+        elif path_type == 'path':
+            self.image = Img.open(path)
+        else:
+            raise Exception('invalid type choose between url or path')
 
     def resize(self, new_height: int = 100, get_path: bool = False) -> str:
         """
