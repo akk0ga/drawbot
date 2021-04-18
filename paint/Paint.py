@@ -143,6 +143,40 @@ class Paint:
             pixel[1] = pixel[1] + 1
             self.mouse.release_button()
 
+    def test_draw_shape(self, size: tuple, start_to: tuple, image):
+        """
+        draw shape
+        :param image:
+        :param start_to:
+        :param size:
+        """
+
+        start_width, start_height = start_to
+        self.mouse.move(x=start_to[0], y=start_to[1])
+        pixel: list = [0, 0]  # x, y
+
+        img = Image.open(image)
+        img_width = img.width
+        img_height = img.height
+        img = img.load()
+
+        # define draw width and height
+        width = img_width + start_width
+        height = img_height + start_height
+
+        for y in range(start_height, height):
+            pixel[0] = 0  # begin the line to the first pixel
+            for x in range(start_width, width):
+                color = img[pixel[0], pixel[1]]
+                if color != (255, 255, 255):
+                    if pixel[0] == 0 and pixel[1] == 0:
+                        self.select_color(color=color[0]+color[1]+color[2])
+                        self.mouse.move(x=x, y=y)
+                        self.mouse.press_button()
+                        
+                pixel[0] = pixel[0] + 1  # go to the next pixel in the line
+            pixel[1] = pixel[1] + 1  # change pixel line
+
     def select_color(self, color: int):
         """
         select color on paint

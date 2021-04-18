@@ -44,7 +44,7 @@ class App:
         image.update_color(colors=pixel_list)
 
         # draw image
-        self.paint.draw_shape(size=p2, start_to=p1, image=resize_path)
+        self.paint.test_draw_shape(size=p2, start_to=p1, image=resize_path)
 
 
 if __name__ == "__main__":
