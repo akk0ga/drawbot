@@ -139,7 +139,7 @@ class Paint:
                     self.select_color(color=total)
                     self.mouse.move(x=x, y=y)
                     self.mouse.click()
-                    time.sleep(1 / 100)
+                    time.sleep(1 / 1000)
             pixel[1] = pixel[1] + 1
             self.mouse.release_button()
 
@@ -154,10 +154,10 @@ class Paint:
 
     def define_color(self, pixel_list: list) -> list:
         """
-                update image color
-                :param pixel_list:
-                :return:
-                """
+        update image color
+        :param pixel_list:
+        :return:
+        """
         paint_color = self.__color_list[self.mode]  # get color to compare for select mode
 
         for pixel in range(0, len(pixel_list)):

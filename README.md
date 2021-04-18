@@ -9,3 +9,9 @@ You don't know how to draw ? No problem ! with picasso you can draw anything on 
 - paint
 - paint 3d
 - skribble.io
+- gartic phone
+
+## Dependencies
+- pynput
+- requests
+- PIL
