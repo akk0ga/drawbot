@@ -175,8 +175,11 @@ class Paint:
                         if current_color != color:
                             current_color = color
                             self.select_color(color=color)
-                            self.mouse.move(x=x, y=y)
-                    print(color)
+                        else:
+                            if total_color_value == current_color:
+                                self.mouse.click()
+                    self.mouse.move(x=x, y=y)
+
                     pixel[0] += 1
                 pixel[1] += 1
 
@@ -187,7 +190,7 @@ class Paint:
         """
         x, y = self.__color_list[self.mode][color][1]
         self.mouse.move(x=x, y=y)
-        time.sleep(1/1000)
+        time.sleep(1/10)
         self.mouse.click()
 
     def define_color(self, pixel_list: list) -> list:
