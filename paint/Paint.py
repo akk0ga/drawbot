@@ -191,7 +191,7 @@ class Paint:
         """
         x, y = self.__color_list[self.mode][color][1]
         self.mouse.move(x=x, y=y)
-        time.sleep(0.05)
+        time.sleep(0.01)
         self.mouse.click()
 
     def define_color(self, pixel_list: list) -> list:
