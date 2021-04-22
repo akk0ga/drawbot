@@ -171,16 +171,12 @@ class Paint:
                 for x in range(start_width, width):
                     r, g, b = image_load[pixel[0], pixel[1]]
                     total_color_value = r+g+b
-                    if total_color_value != 765 or color != 765:
-                        if color == total_color_value:
-                            if current_color != color:
-                                current_color = color
-                                self.select_color(color=color)
-                                self.mouse.move(x=x, y=y)
-                            else:
-                                self.mouse.move(x=x, y=y)
-                            self.mouse.click()
-                    print(total_color_value)
+                    if total_color_value != 765 and color != 765:
+                        if current_color != color:
+                            current_color = color
+                            self.select_color(color=color)
+                            self.mouse.move(x=x, y=y)
+                    print(color)
                     pixel[0] += 1
                 pixel[1] += 1
 
@@ -191,6 +187,7 @@ class Paint:
         """
         x, y = self.__color_list[self.mode][color][1]
         self.mouse.move(x=x, y=y)
+        time.sleep(1/1000)
         self.mouse.click()
 
     def define_color(self, pixel_list: list) -> list:
