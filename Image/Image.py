@@ -64,6 +64,16 @@ class Image:
         """
         return list(self.image.getdata())
 
+    def get_size(self) -> tuple:
+        """
+        return the size of image
+        :return: tuple
+        """
+        return self.image.size
+
+    def get_pixel(self):
+        return self.image.load()
+
     def set_path(self, image_path: str):
         self.image = Img.open(image_path)
 

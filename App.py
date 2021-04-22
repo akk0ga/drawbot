@@ -6,7 +6,7 @@ from paint.Paint import Paint
 class App:
     def __init__(self):
         self.mouse = Mouse()
-        self.paint = Paint(mode='3d', brush='marker')
+        self.paint = Paint(mode='classic', brush='brush')
 
     def choose_image(self):
         """
@@ -44,7 +44,7 @@ class App:
         image.update_color(colors=pixel_list)
 
         # draw image
-        self.paint.test_draw_shape(size=p2, start_to=p1, image=resize_path)
+        self.paint.test_draw_shape(size=p2, start_to=p1, image=image)
 
 
 if __name__ == "__main__":

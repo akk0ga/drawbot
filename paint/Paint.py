@@ -120,7 +120,6 @@ class Paint:
         self.mouse.move(x=start_to[0], y=start_to[1])
         pixel: list = [0, 0]  # x, y
 
-        image = Image.open(image)
         img = image.load()
 
         # define draw width and height
@@ -150,32 +149,40 @@ class Paint:
         :param start_to:
         :param size:
         """
-
-        start_width, start_height = start_to
-        self.mouse.move(x=start_to[0], y=start_to[1])
-        pixel: list = [0, 0]  # x, y
-
-        img = Image.open(image)
-        img_width = img.width
-        img_height = img.height
-        img = img.load()
+        current_color: int = 0
+        pixel: list = [0, 0]  # get pixel position on the image x, y
+        image_load = image.get_pixel()  # get image info and load it to get pixel
 
         # define draw width and height
-        width = img_width + start_width
-        height = img_height + start_height
+        start_width, start_height = start_to
+        image_width, image_height = image.get_size()
+        width = image_width + start_width
+        height = image_height + start_height
 
-        for y in range(start_height, height):
-            pixel[0] = 0  # begin the line to the first pixel
-            for x in range(start_width, width):
-                color = img[pixel[0], pixel[1]]
-                if color != (255, 255, 255):
-                    if pixel[0] == 0 and pixel[1] == 0:
-                        self.select_color(color=color[0]+color[1]+color[2])
-                        self.mouse.move(x=x, y=y)
-                        self.mouse.press_button()
-                        
-                pixel[0] = pixel[0] + 1  # go to the next pixel in the line
-            pixel[1] = pixel[1] + 1  # change pixel line
+        # set mouse to start position
+        self.mouse.move(x=start_width, y=start_height)
+
+        # get each color key and verify all pixel for this color
+        for color in self.color:
+            pixel[1] = 0
+            pixel[0] = 0
+            for y in range(start_height, height):
+                pixel[0] = 0
+                for x in range(start_width, width):
+                    r, g, b = image_load[pixel[0], pixel[1]]
+                    total_color_value = r+g+b
+                    if total_color_value != 765 or color != 765:
+                        if color == total_color_value:
+                            if current_color != color:
+                                current_color = color
+                                self.select_color(color=color)
+                                self.mouse.move(x=x, y=y)
+                            else:
+                                self.mouse.move(x=x, y=y)
+                            self.mouse.click()
+                    print(total_color_value)
+                    pixel[0] += 1
+                pixel[1] += 1
 
     def select_color(self, color: int):
         """
