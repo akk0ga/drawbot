@@ -108,48 +108,13 @@ class Paint:
 
         return p1, p2
 
-    def draw_shape(self, size: tuple, start_to: tuple, image):
+    def draw(self, start_to: tuple, image):
         """
         draw shape
         :param image:
         :param start_to:
-        :param size:
         """
-
-        start_width, start_height = start_to
-        self.mouse.move(x=start_to[0], y=start_to[1])
-        pixel: list = [0, 0]  # x, y
-
-        img = image.load()
-
-        # define draw width and height
-        width = image.width + start_width
-        height = image.height + start_height
-
-        for y in range(start_height, height):
-            if pixel[0] != 0:
-                pixel[0] = 0
-            for x in range(start_width, width):
-                total: int = 0
-                for value in img[pixel[0], pixel[1]]:
-                    total = total + value
-                pixel[0] = pixel[0] + 1
-                if total != 765:
-                    self.select_color(color=total)
-                    self.mouse.move(x=x, y=y)
-                    self.mouse.click()
-                    time.sleep(1 / 1000)
-            pixel[1] = pixel[1] + 1
-            self.mouse.release_button()
-
-    def test_draw_shape(self, size: tuple, start_to: tuple, image):
-        """
-        draw shape
-        :param image:
-        :param start_to:
-        :param size:
-        """
-        current_color: int = 0
+        current_color: int = 0  # remember the color used
         pixel: list = [0, 0]  # get pixel position on the image x, y
         image_load = image.get_pixel()  # get image info and load it to get pixel
 
