@@ -95,7 +95,6 @@ class Image:
             pixel[1] += 1
 
         colors.sort()
-        print(colors)
         return tuple(colors)
 
     def set_path(self, image_path: str):

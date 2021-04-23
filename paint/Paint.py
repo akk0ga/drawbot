@@ -145,7 +145,7 @@ class Paint:
         :param start_to:
         """
         current_color: int = 0  # remember the color used
-        image_load: list = image.get_pixel()  # get image pixel list
+        image_load = image.get_pixel()  # get image pixel list
         image_color: tuple = image.get_colors_value()
 
         # define draw width and height
