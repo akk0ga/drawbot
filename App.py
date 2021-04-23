@@ -6,7 +6,7 @@ from paint.Paint import Paint
 class App:
     def __init__(self):
         self.mouse = Mouse()
-        self.paint = Paint(mode='classic', brush='brush')
+        self.paint = Paint(mode='classic')
 
     def choose_image(self):
         """

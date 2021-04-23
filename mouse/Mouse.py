@@ -56,11 +56,12 @@ class Mouse:
         else:
             raise Exception('The button selected is not allow')
 
-    def get_position(self) -> tuple:
+    def get_position(self):
         """
         return mouse position
         """
-        return self.mouse.position
+        while True:
+            print(self.mouse.position)
 
     def __on_click(self, x, y, button, pressed):
         if pressed and button == Button.left:

@@ -51,32 +51,33 @@ class Paint:
             400: ('purple', (1805, 943), (163, 73, 164))
         },
         'skribble': {
-            0: ('black', (), (0, 0, 0), 0),
-            765: ('white', (), (255, 255, 255)),
-            579: ('light grey', (), (193, 193, 193)),
-            228: ('grey', (), (76, 76, 76)),
-            134: ('dark red', (), (116, 11, 7)),
-            269: ('red', (), (239, 19, 11)),
-            368: ('orange', (), (255, 113, 0)),
-            250: ('dark orange', (), (194, 56, 0)),
-            483: ('yellow', (), (255, 228, 0)),
-            394: ('dark yellow', (), (232, 162, 0)),
-            204: ('green', (), (0, 204, 0)),
-            101: ('dark green', (), (0, 85, 16)),
-            433: ('sky blue', (), (0, 178, 255)),
-            244: ('ocean blue', (), (0, 86, 158)),
-            277: ('blue', (), (35, 31, 211)),
-            123: ('dark blue', (), (14, 8, 101)),
-            249: ('purple', (), (163, 0, 86)),
-            190: ('dark purple', (), (85, 0, 105)),
-            505: ('pink', (), (211, 124, 170)),
-            287: ('brown', (), (160, 82, 45)),
-            160: ('dark brown', (), (99, 48, 13)),
+            0: ('black', (586, 919), (0, 0, 0), 0),
+            765: ('white', (586, 894), (255, 255, 255)),
+            579: ('light grey', (606, 894), (193, 193, 193)),
+            228: ('grey', (610, 918), (76, 76, 76)),
+            134: ('dark red', (635, 918), (116, 11, 7)),
+            269: ('red', (632, 894), (239, 19, 11)),
+            368: ('orange', (657, 895), (255, 113, 0)),
+            250: ('dark orange', (658, 919), (194, 56, 0)),
+            483: ('yellow', (682, 893), (255, 228, 0)),
+            394: ('dark yellow', (682, 919), (232, 162, 0)),
+            204: ('green', (704, 896), (0, 204, 0)),
+            101: ('dark green', (703, 919), (0, 85, 16)),
+            433: ('sky blue', (729, 892), (0, 178, 255)),
+            244: ('ocean blue', (730, 920), (0, 86, 158)),
+            277: ('blue', (753, 891), (35, 31, 211)),
+            123: ('dark blue', (751, 918), (14, 8, 101)),
+            249: ('purple', (777, 894), (163, 0, 86)),
+            190: ('dark purple', (776, 919), (85, 0, 105)),
+            505: ('pink', (801, 893), (211, 124, 170)),
+            287: ('brown', (822, 893), (160, 82, 45)),
+            160: ('dark brown', (827, 918), (99, 48, 13)),
         }
     }
 
     __brush_available: dict = {
         'classic': ('brush', 'calligraphy', 'air-brush'),
+        'skribble': ('brush', 'calligraphy', 'air-brush'),
         '3d': ('marker', 'calligraphy', 'pen', 'pastel')
     }
 
@@ -161,7 +162,7 @@ class Paint:
                 for x in range(start_width, width):
                     r, g, b = image_load[pixel[0], pixel[1]]
                     total_color_value = r+g+b
-                    if total_color_value != 765 and color != 765 and x % 2 == 0:
+                    if total_color_value != 765 and color != 765 and x % 1 == 0:
                         if current_color != color:
                             current_color = color
                             self.select_color(color=color)
