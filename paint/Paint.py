@@ -81,10 +81,12 @@ class Paint:
         '3d': ('marker', 'calligraphy', 'pen', 'pastel')
     }
 
-    def __init__(self, mode: str = 'classic', brush: str = 'brush'):
+    def __init__(self, mode: str = 'classic', brush: str = 'brush', details: int = 2):
         """
         mode represent the paint version\n
         brush represent the brush choose to draw\n
+        details represent the precision of the draw is the value is 1 it draw each pixel if 2 it draw all pair pixel
+        etc etc \n
 
         mode is equal to:\n
         - classic (basic paint)
@@ -109,6 +111,7 @@ class Paint:
         """
         self.mouse = Mouse()
         self.mode = mode
+        self.details = details
 
         # define color list to use
         if mode in self.__color_list:
@@ -162,7 +165,7 @@ class Paint:
                 for x in range(start_width, width):
                     r, g, b = image_load[pixel[0], pixel[1]]
                     total_color_value = r+g+b
-                    if total_color_value != 765 and color != 765 and x % 1 == 0:
+                    if total_color_value != 765 and color != 765 and x % self.details == 0:
                         if current_color != color:
                             current_color = color
                             self.select_color(color=color)
