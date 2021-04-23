@@ -59,7 +59,7 @@ class Image:
 
     def get_color(self) -> list:
         """
-        get color from the image in matrix
+        get color list from image
         :return: list
         """
         return list(self.image.getdata())
@@ -73,6 +73,28 @@ class Image:
 
     def get_pixel(self):
         return self.image.load()
+
+    def get_colors_value(self) -> tuple:
+        """
+        return color value present in the image
+        :return: tuple
+        """
+        pixel: list = [0, 0]
+        pixel_list: list = self.get_pixel()
+        width, height = self.get_size()
+        colors: list = []
+
+        for y in range(0, height):
+            pixel[0] = 0
+            for x in range(0, width):
+                r, g, b = pixel_list[x, y]
+                total = r + g + b
+                if total not in colors:
+                    colors.append(total)
+                pixel[0] += 1
+            pixel[1] += 1
+
+        return tuple(colors)
 
     def set_path(self, image_path: str):
         self.image = Img.open(image_path)

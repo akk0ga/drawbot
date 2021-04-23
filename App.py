@@ -42,6 +42,7 @@ class App:
         pixels_color = image.get_color()
         pixel_list = self.paint.define_color(pixel_list=pixels_color)
         image.update_color(colors=pixel_list)
+        print(image.get_colors_value())
 
         # draw image
         self.paint.draw(start_to=p1, image=image)
