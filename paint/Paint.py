@@ -115,7 +115,6 @@ class Paint:
         :param start_to:
         """
         current_color: int = 0  # remember the color used
-        pixel: list = [0, 0]  # get pixel position on the image x, y
         image_load: list = image.get_pixel()  # get image pixel list
         image_color: tuple = image.get_colors_value()
 
@@ -125,14 +124,12 @@ class Paint:
         width: int = image_width + start_width
         height: int = image_height + start_height
 
-        self.select_color(color=0)
         # set mouse to start position
         self.mouse.move(x=start_width, y=start_height)
 
         # get each color key and verify all pixel for this color
         for color in image_color:
-            if pixel != [0, 0]:
-                pixel = [0, 0]
+            pixel: list = [0, 0]
             for y in range(start_height, height):
                 pixel[0] = 0
                 for x in range(start_width, width):
