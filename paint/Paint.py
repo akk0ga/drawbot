@@ -116,21 +116,23 @@ class Paint:
         """
         current_color: int = 0  # remember the color used
         pixel: list = [0, 0]  # get pixel position on the image x, y
-        image_load = image.get_pixel()  # get image info and load it to get pixel
+        image_load: list = image.get_pixel()  # get image pixel list
+        image_color: tuple = image.get_colors_value()
 
         # define draw width and height
         start_width, start_height = start_to
         image_width, image_height = image.get_size()
-        width = image_width + start_width
-        height = image_height + start_height
+        width: int = image_width + start_width
+        height: int = image_height + start_height
 
+        self.select_color(color=0)
         # set mouse to start position
         self.mouse.move(x=start_width, y=start_height)
 
         # get each color key and verify all pixel for this color
-        for color in self.color:
-            pixel[1] = 0
-            pixel[0] = 0
+        for color in image_color:
+            if pixel != [0, 0]:
+                pixel = [0, 0]
             for y in range(start_height, height):
                 pixel[0] = 0
                 for x in range(start_width, width):
