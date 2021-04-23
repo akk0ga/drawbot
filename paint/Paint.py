@@ -1,5 +1,4 @@
 import time
-from PIL import Image
 from mouse.Mouse import Mouse
 
 
@@ -50,6 +49,29 @@ class Paint:
             411: ('blue', (1735, 944), (0, 168, 243)),
             339: ('indigo', (1771, 946), (63, 72, 204)),
             400: ('purple', (1805, 943), (163, 73, 164))
+        },
+        'skribble': {
+            0: ('black', (), (0, 0, 0), 0),
+            765: ('white', (), (255, 255, 255)),
+            579: ('light grey', (), (193, 193, 193)),
+            228: ('grey', (), (76, 76, 76)),
+            134: ('dark red', (), (116, 11, 7)),
+            269: ('red', (), (239, 19, 11)),
+            368: ('orange', (), (255, 113, 0)),
+            250: ('dark orange', (), (194, 56, 0)),
+            483: ('yellow', (), (255, 228, 0)),
+            394: ('dark yellow', (), (232, 162, 0)),
+            204: ('green', (), (0, 204, 0)),
+            101: ('dark green', (), (0, 85, 16)),
+            433: ('sky blue', (), (0, 178, 255)),
+            244: ('ocean blue', (), (0, 86, 158)),
+            277: ('blue', (), (35, 31, 211)),
+            123: ('dark blue', (), (14, 8, 101)),
+            249: ('purple', (), (163, 0, 86)),
+            190: ('dark purple', (), (85, 0, 105)),
+            505: ('pink', (), (211, 124, 170)),
+            287: ('brown', (), (160, 82, 45)),
+            160: ('dark brown', (), (99, 48, 13)),
         }
     }
 
@@ -66,6 +88,7 @@ class Paint:
         mode is equal to:\n
         - classic (basic paint)
         - 3d (if you use paint 3d)
+        - skribble (if you use skribble.io)
 
         brush available for classic mode:\n
         - brush
@@ -77,6 +100,9 @@ class Paint:
         - calligraphy
         - pen
         - pastel
+
+        brush available for skribble mode:\n
+        - brush
 
         :param mode:
         """
@@ -144,7 +170,6 @@ class Paint:
                                 self.mouse.click()
                                 time.sleep(0.001)
                     self.mouse.move(x=x, y=y)
-
                     pixel[0] += 1
                 pixel[1] += 1
 
