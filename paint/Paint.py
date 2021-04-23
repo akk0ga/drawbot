@@ -136,7 +136,7 @@ class Paint:
                 for x in range(start_width, width):
                     r, g, b = image_load[pixel[0], pixel[1]]
                     total_color_value = r+g+b
-                    if total_color_value != 765 and color != 765:
+                    if total_color_value != 765 and color != 765 and x % 2 == 0:
                         if current_color != color:
                             current_color = color
                             self.select_color(color=color)
