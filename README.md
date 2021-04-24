@@ -5,7 +5,7 @@
 # Drawbot
 You don't know how to draw ? No problem ! with drawbot you can draw anything on your computer
 
-## platform available:
+## work on:
 - paint
 - paint 3d
 - skribbl.io
