@@ -3,12 +3,12 @@
 </p>
 
 # Drawbot
-You don't know how to draw ? No problem ! with picasso you can draw anything on your computer
+You don't know how to draw ? No problem ! with drawbot you can draw anything on your computer
 
-## platform available:
+## work on:
 - paint
 - paint 3d
-- skribble.io
+- skribbl.io
 
 ## Dependencies
 - pynput
