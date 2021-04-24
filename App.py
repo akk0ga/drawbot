@@ -6,7 +6,18 @@ from paint.Paint import Paint
 class App:
     def __init__(self):
         self.mouse = Mouse()
-        self.paint = Paint(mode='classic')
+
+        # select the mode to use for the draw
+        mode: input = input('choose your mode:\n1- paint classic\n2- paint 3d\n3- skribble\nyour choice: ')
+        while mode != '1' and mode != '2' and mode != '3':
+            mode: input = input('choose your mode:\n1- paint classic\n2- paint 3d\n3- skribble\nyour choice: ')
+        if mode == '1':
+            mode = 'classic'
+        elif mode == '2':
+            mode = '3d'
+        else:
+            mode = 'skribble'
+        self.paint = Paint(mode=mode, details=3)
 
     def choose_image(self):
         """
@@ -44,7 +55,7 @@ class App:
         image.update_color(colors=pixel_list)
 
         # draw image
-        self.paint.draw(start_to=p1, image=image)
+        #self.paint.draw(start_to=p1, image=image)
 
 
 if __name__ == "__main__":

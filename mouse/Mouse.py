@@ -13,19 +13,19 @@ class Mouse:
         """
         self.mouse.position = (x, y)
 
-    def click(self, button: str = 'left', number: int = 1):
+    def click(self, button: str = 'left', total_click: int = 1):
         """
         perform click on screen\n
         button is equal to:\n
         - right
         - left
-        :param number:
+        :param total_click:
         :param button:
         """
         if button == 'right':
-            self.mouse.click(Button.right, number)
+            self.mouse.click(Button.right, total_click)
         elif button == 'left':
-            self.mouse.click(Button.left, number)
+            self.mouse.click(Button.left, total_click)
         else:
             raise Exception('The button selected is not allow')
 
