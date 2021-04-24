@@ -172,7 +172,7 @@ class Paint:
                         else:
                             if total_color_value == current_color:
                                 self.mouse.click()
-                                time.sleep(0.001)
+                                time.sleep(0.01)
                     self.mouse.move(x=x, y=y)
                     pixel[0] += 1
                 pixel[1] += 1

@@ -80,7 +80,7 @@ class Image:
         :return: tuple
         """
         pixel: list = [0, 0]
-        pixel_list: list = self.get_pixel()
+        pixel_list = self.get_pixel()
         width, height = self.get_size()
         colors: list = []
 
